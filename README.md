@@ -7,4 +7,7 @@ Feel free to contribute.git
 
 ### Requirements
 `pip install keyboard`
-`pip install vgamepad`
+`pip install vgamepad`  
+
+For reading controller buttons
+`pip install pygame`
