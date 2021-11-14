@@ -28,7 +28,6 @@ countToTen():
         print(i)
         time.sleep(1)
 
-#Press a button to incialize emulator
 print("Delivery increse button will be pressed in 10seconds")
 countToTen()
 pressButton(BTN_DELIV_INC)
