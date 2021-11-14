@@ -32,6 +32,8 @@ BTN_DELIV_DEC = vg.XUSB_BUTTON.XUSB_GAMEPAD_B
 BTN_RECOV_INC = vg.XUSB_BUTTON.XUSB_GAMEPAD_X
 BTN_RECOV_DEC = vg.XUSB_BUTTON.XUSB_GAMEPAD_Y
 BTN_MGU_H = vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_THUMB
+BTN_EB_INC = vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP
+BTN_EB_DEC = vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN
 
 
 #SETUP
@@ -55,8 +57,10 @@ def reset():
     currentEngineBraking = SETUP_ENGINE_BRAKE
     global currentMGUH
     currentMGUH = SETUP_MGUH
+    print('RESET')
 
 def changeERSMode(mode):
+    print("Changing ERS =>", mode)
     global currentERSMode
     diff = mode - currentERSMode
     if (diff > 0): 
@@ -70,6 +74,7 @@ def changeERSMode(mode):
         currentERSMode = mode
 
 def changeRecovery(n):
+    print("Changing Recovery =>", n)
     global currentERSRecovery
     diff = n - currentERSRecovery
     if (diff > 0): 
@@ -83,19 +88,21 @@ def changeRecovery(n):
         currentERSRecovery = n
 
 def changeEngineBraking(n):
+    print("Changing Engine Brake =>", n)
     global currentEngineBraking
     diff = n - currentEngineBraking
     if (diff > 0): 
         for _ in range(diff):
-            pressButton(BTN_DELIV_INC)
+            pressButton(BTN_EB_INC)
         currentEngineBraking = n
 
     if (diff < 0):
         for _ in range(abs(diff)): 
-            pressButton(BTN_DELIV_DEC)
+            pressButton(BTN_EB_DEC)
         currentEngineBraking = n
 
 def changeMGUH(mode):
+    print("Changing MGUH =>", mode)
     global currentMGUH
     if(mode != currentMGUH):
         pressButton(BTN_MGU_H)
